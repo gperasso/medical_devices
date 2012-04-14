@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Medical Device - Configuration Data: <%=item.name%></title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <a href="/"><h1>System Configuration</h1></a>
+    <dl>
+      <dt>Configuration name</dt>
+      <dd><%=item.name%></dd>
+      <% if (item.description) { %>
+      <dt>System</dt>
+      <dd><%=item.system%></dd>
+      <dt>System Class</dt>
+      <dd><%=item.systemClass%></dd>
+      <dt>Capacity</dt>
+      <dd><%=item.capacity%></dd>
+      <% } %>
+      <dt>Components</dt>
+      
+      <dd>
+        <% if (related_items.length > 0) { %>
+        <ul>
+          <% related_items.forEach(function(related_item) { %>
+          <li>
+            <a href="/components/<%=related_item._id%>">
+              <%=related_item.name%>
+            </a>
+          </li>
+          <% }); %>
+        </ul>
+        <% } else { %>
+        No components have been added to this Configuration yet.
+        <% } %>
+      </dd>
+    </dl>
+    <div class="control">
+      <h2>Add a new Component</h2>
+      <form id="create-component" method="post" action="/components/">
+        <input type="hidden" name="item[configuration]" value="<%=item._id%>">
+        <!-- The line above links the candidate to be created to this party. -->
+        <label>Component Name: 
+          <input name="item[name]" type="text" required
+                   placeholder="id ">
+        </label>
+
+        <button>Add</button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>System Data: <%=item.name%></title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <a href="/"><h1>Medical Instruments Data (System)</h1></a>
+    <dl>
+      <dt>Name</dt>
+      <dd><%=item.name%></dd>
+      <dt>Description</dt>
+      <dd><%=item.description%></dd>
+      <dt>Family</dt>
+      <dd><%=item.family%></dd>
+      <dt>Line</dt>
+      <dd><%=item.line%></dd>
+      <dt>Status</dt>
+      <dd><%=item.status%></dd>
+      <dt>Image URL</dt>
+      <dd><img src="<%=item.image%>" alt="<%=item.name%>"></dd>
+      <!--
+      <dt3:16 PM 4/13/2012>Party</dt>
+      <dd><a href="/parties/<%=item.party%>"><%=item.party%></a></dd>
+      <% if (item.image) { %>
+      <% } %>
+      -->
+    </dl>
+    <div class="control">
+      <h2>Update Component</h2>
+      <form method="post" action="/components/<%=item._id%>">
+        <input type="hidden" name="_method" value="put">
+        <!-- The line above tells the server to treat this as a PUT request. -->
+
+        <label>Name: 
+          <input name="item[name]" value="<%=item.name%>" type="text" required>
+        </label>
+        <label>Description: 
+          <input name="item[description]" value="<%=item.description%>" type="text" required>
+        </label>
+        <label>Type: 
+          <input name="item[family]" value="<%=item.family%>" type="text" required>
+        </label>
+        <label>Line: 
+          <input name="item[line]" value="<%=item.line%>" type="text" required>
+        </label>
+        <label>Status: 
+          <input name="item[status]" value="<%=item.status%>" type="text" required>
+        </label>
+         <label>Image URL:
+          <input name="item[image]" value="<%=item.image%>" type="url" size="80"> 
+         </label>
+
+        <!--
+         <label>Party: 
+          <select name="item[party]" required>
+            <% related_items.forEach(function(related_item) { %>
+            <option value="<%=related_item._id%>"
+              <% if (related_item._id === item.party) { %>selected<% } %>>
+              <%=related_item.name%>
+            </option>
+            <% }); %>
+          </select>
+         </label>
+        -->
+
+        <button>Update</button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -15,23 +15,6 @@ if (! USER_OR_GROUP_NAME) {
 
 // Import some utility functions.
 var utils = require('./utils');
-// This is a sample application which you can use as a starting point for your
-// project. The only parts you should *need* to change are indicated with `TODO`
-// below. However, you are welcome to change more if you wish.
-
-////////////////////////////////////////////////////////////////////////////////
-
-var USER_OR_GROUP_NAME = ''; // TODO: Insert GitHub username or group name.
-
-////////////////////////////////////////////////////////////////////////////////
-
-if (! USER_OR_GROUP_NAME) { 
-  throw new Error(
-    'You must set your GitHub username or group name in the app.js file'); 
-}
-
-// Import some utility functions.
-var utils = require('./utils');
 
 // Create a new web application.
 var app = utils.initializeWebApp();

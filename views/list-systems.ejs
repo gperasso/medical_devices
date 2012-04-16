@@ -16,6 +16,47 @@
     <div>No systems found.</div>
     <% } %>
     <div class="control">
+      <h2>Add or update a Medical System</h2>
+      <script>
+      function onFormSubmit(form) {
+        form.action = form.action + form.elements['item[id]'].value;
+        console.log(form.action);
+        return true;
+      } 
+      </script>
+      <form method="post" action="/systems/"
+            onsubmit="return onFormSubmit(this);">
+        <!-- The line above dynamically sets the PUT destination when the -->
+        <!-- form is submitted. -------------------------------------------->
+        <input type="hidden" name="_method" value="put">
+        <!-- The line above tells the server to treat this as a PUT request. -->
+        <label>System ID<br>
+          (lowercase letters only, no spaces):
+          <input name="item[id]" type="text" pattern="[a-z]+" required
+                 placeholder="component">
+        </label>
+        <label>Name: 
+          <input name="item[name]" type="text" required>
+        </label>
+        <label>Description: 
+          <input name="item[description]" type="text" required>
+        </label>
+        <label>Type: 
+          <input name="item[family]" type="text" required>
+        </label>
+        <label>Line: 
+          <input name="item[line]" type="text" required>
+        </label>
+        <label>Status: 
+          <input name="item[status]" type="text" required>
+        </label>
+         <label>Image URL:
+          <input name="item[image]" type="url" size="80"> 
+         </label>
+        <button>Add or update</button>
+      </form>
+    </div>
+    <div class="control">
       <h2>Search for systems by name</h2>
       <form method="get" action="/systems/">
         <label>Component name: <input name="name"></label>

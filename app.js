@@ -316,6 +316,57 @@ app.get('/parties/:id',      // TODO: change to suit your URI design.
   }
 );
 
+//medical devices//////////////////////////////////////////////////////////////////////////////
+// An example of handling GET of a "single" resource. //////////////////////////
+// This handler is more complicated, because we want to show not only the //////
+// item requested, but also links to a set of related items. ///////////////////
+////////////////////////////////////////////////////////////////////////////////
+app.get('/systems/:id',      // TODO: change to suit your URI design.
+  function(req, res) {
+
+    var item_type = 'system'; // TODO: change to the type of item you want.
+
+    // Get the item ID from the URI.
+    var item_id = req.params.id;
+  
+    // Get one item of the specified type, identified by the item ID.
+    db.getOne(item_type, item_id, function(err, item) {
+        
+      // If there was a database error, return an error status.
+      if (err) {
+        if (err.error == 'not_found') { res.send(404); }
+        else { res.send(err, 500); }
+      } 
+
+      // Otherwise, get the related items associated with this item.
+      else {
+        
+        var related_type = 'system'; // TODO: change to type of related item.
+
+        // Set our query to find the items related to the requested item.
+        req.query.party = item_id; // TODO: change `party` to reflect the
+                                   // relation between the item fetched above
+                                   // and the related items to be fetched below.
+
+        // Get items of the specified type that match the query.
+        db.getSome(related_type, req.query, function(err, items) {
+
+          // If there was a database error, return an error status.
+          if (err) { res.send(err, 500); } 
+
+          // Otherwise, use the returned data to render an HTML page.
+          else {
+            res.render(
+            'a_system', // TODO: change to the name of your HTML template.
+              { item: item, related_items: items }
+            );
+          }
+        });
+      }
+    });
+  }
+);
+
 ////////////////////////////////////////////////////////////////////////////////
 // An example of handling GET of a "single" resource. //////////////////////////
 // This handler is also complicated, because we want to show not only the //////

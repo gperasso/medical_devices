@@ -46,4 +46,17 @@ The instrument base administrator should be able to create a system in the appli
 ## Metadata Annotations
 Systems and components are annotated with microdata, using terms defined in Schema.org 
 
+Systems and Components are defined as extensions of the Schema.org term: Product, as
+ 
+ itemtype="http://schema.org/Product/Clinical/Diagnostic/System"
+ itemtype="http://schema.org/Product/Clinical/Diagnostic/Component"
+
+For Systems:
+The property "Country of Origin" is annotated through the terms "Organization/Corporation", "PostalAddress" and "Country".
+The property "Application" is also an extension of the Product's property "brand". 
+A property "productManager" is created for the term Product. The property is linked to the class "Person", using the standard property "name".
+
+
+
+ 
 

@@ -1,70 +1,75 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>System Data: <%=item.name%></title>
+    <title>Medical System Data: <%=item.name%></title>
     <link rel="stylesheet" href="/style.css">
   </head>
   <body>
-    <a href="/"><h1>Medical Instruments Data (System)</h1></a>
-    <dl>
-      <dt>Name</dt>
-      <dd><%=item.name%></dd>
+    <div itemscope itemtype="http://schema.org/Product/Clinical/Diagnostic/System">
+     <a href="/"><h1>System Data</h1></a>
+     <dl>
+      <dt>System name</dt>
+      <span itemprop="name"> <dd><%=item.sys_name%></dd></span>
+      <% if (item.sys_descrip) { %>
       <dt>Description</dt>
-      <dd><%=item.description%></dd>
-      <dt>Family</dt>
-      <dd><%=item.family%></dd>
-      <dt>Line</dt>
-      <dd><%=item.line%></dd>
-      <dt>Status</dt>
-      <dd><%=item.status%></dd>
-      <dt>Image URL</dt>
-      <dd><img src="<%=item.image%>" alt="<%=item.name%>"></dd>
-      <!--
-      <dt3:16 PM 4/13/2012>Party</dt>
-      <dd><a href="/parties/<%=item.party%>"><%=item.party%></a></dd>
-      <% if (item.image) { %>
+      <span itemprop="description"> <dd><%=item.sys_descrip%></dd> </span>
       <% } %>
-      -->
-    </dl>
-    <div class="control">
-      <h2>Update Component</h2>
-      <form method="post" action="/components/<%=item._id%>">
-        <input type="hidden" name="_method" value="put">
-        <!-- The line above tells the server to treat this as a PUT request. -->
-
-        <label>Name: 
-          <input name="item[name]" value="<%=item.name%>" type="text" required>
-        </label>
-        <label>Description: 
-          <input name="item[description]" value="<%=item.description%>" type="text" required>
-        </label>
-        <label>Type: 
-          <input name="item[family]" value="<%=item.family%>" type="text" required>
-        </label>
-        <label>Line: 
-          <input name="item[line]" value="<%=item.line%>" type="text" required>
-        </label>
-        <label>Status: 
-          <input name="item[status]" value="<%=item.status%>" type="text" required>
-        </label>
-         <label>Image URL:
-          <input name="item[image]" value="<%=item.image%>" type="url" size="80"> 
-         </label>
-
-        <!--
-         <label>Party: 
-          <select name="item[party]" required>
-            <% related_items.forEach(function(related_item) { %>
-            <option value="<%=related_item._id%>"
-              <% if (related_item._id === item.party) { %>selected<% } %>>
+     <dt>Country of Origin</dt>
+      <span itemprop="manufacturer" itemscope itemtype="http://www.schema.org/Corporation"
+        <span itemprop="location" itemscope itemtype="http://www.schema.org/PostalAddress"
+          <span itemprop="addressCountry" itemscope itemtype="http://www.schema.org/Country"
+           <span itemprop="name"> <dd><%=item.sys_country%></dd> </span>
+          </span>
+        </span>
+      </span>
+      <dt>Application</dt>
+      <span itemprop="brand/application"> <dd><%=item.sys_application%></dd> </span>
+      <dt>Product Manager</dt>
+      <span itemprop="productManager" itemscope itemtype="http://www.schema.org/Person"
+       <span itemprop="name"> <dd><%=item.sys_country%></dd> </span>
+      </span>
+      <dt>Corporate Website</dt>
+      <dd> <a itemprop="url" href="<%=item.website%>"> 
+                  <%=item.website%></a> 
+      </dd>
+      <dt>Image URL</dt>
+      <dd><img itemprop="image" src="<%=item.image%>" alt="<%=item.name%>"></dd>
+      <div style="color:#ff0000"> **LINKED COMPONENTS**
+       <dd>
+        <% if (related_items.length > 0) { %>
+        <ul>
+          <% related_items.forEach(function(related_item) { %>
+          <li>
+            <a href="/components/<%=related_item._id%>">
               <%=related_item.name%>
-            </option>
-            <% }); %>
+            </a>
+          </li>
+          <% }); %>
+        </ul>
+        <% } else { %>
+        No Components have been added to this System.
+        <% } %>
+       </dd>
+      </div>
+     </dl>
+    </div>
+    <div class="control">
+      <h2>Add a new Component</h2>
+      <form id="create-component" method="post" action="/components/">
+        <input type="hidden" name="item[system]" value="<%=item._id%>">
+        <!-- The line above links the candidate to be created to this party. -->
+        <label>Component name: 
+          <input name="item[name]" type="text" size="60" required
+                   placeholder="Standard Name">
+        </label>
+        <label> Type of Part:
+          <select name="item[part_type]" required>
+            <option value="required">Required </option>
+            <option value="optional">Optional </option>
           </select>
-         </label>
-        -->
+        </label>
 
-        <button>Update</button>
+        <button>Add</button>
       </form>
     </div>
   </body>

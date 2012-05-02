@@ -1,80 +1,54 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Component Data: <%=item.name%></title>
+    <title>Medical Devices Data: <%=item.name%></title>
     <link rel="stylesheet" href="/style.css">
   </head>
   <body>
-    <a href="/"><h1>Medical Instruments Data (Components)</h1></a>
-    <dl>
+    <a href="/"><h1>Component Data</h1></a>
+    <div itemscope itemtype="http://schema.org/Product/Clinical/Diagnostic/Component">
+     <dl>
       <dt>Name</dt>
-      <dd><%=item.name%></dd>
+      <span itemprop="name"> <dd><%=item.name%></dd> </span>
+      <% if (item.description) { %>
       <dt>Description</dt>
-      <dd><%=item.description%></dd>
-      <dt>Type</dt>
-      <dd><%=item.type%></dd>
-      <dt>Line</dt>
-      <dd><%=item.line%></dd>
-      <dt>Launch Date</dt>
-      <dd><%=item.launchDate%></dd>
-      <dt>Status</dt>
-      <dd><%=item.status%></dd>
-      <dt>Capacity</dt>
-      <dd><%=item.capacity%></dd>
-      <dt>Image URL</dt>
-      <dd><img src="<%=item.image%>" alt="<%=item.name%>"></dd>
-      <!--
-      <dt3:16 PM 4/13/2012>Party</dt>
-      <dd><a href="/parties/<%=item.party%>"><%=item.party%></a></dd>
-      <% if (item.image) { %>
+      <span itemprop="description"> <dd><%=item.description%></dd> </span>
       <% } %>
-      -->
-    </dl>
+      <% if (item.system) { %>
+      <dt>Attached to System</dt>
+      <span itemprop="model" itemscope itemtype="http://schema.org/Product/Clinical/Diagnostic/System"
+        <span itemprop="name"> <dd><%=item.system%></dd> </span>
+      </span>
+      <% } %>
+      <% if (item.part_type) { %>
+      <dt>Type of Part</dt>
+      <dd><%=item.part_type%></dd>
+      <% } %>
+     </dl>
+    </div>    
     <div class="control">
       <h2>Update Component</h2>
       <form method="post" action="/components/<%=item._id%>">
         <input type="hidden" name="_method" value="put">
         <!-- The line above tells the server to treat this as a PUT request. -->
-
         <label>Name: 
-          <input name="item[name]" value="<%=item.name%>" type="text" required>
+          <input name="item[name]" value="<%=item.name%>" type="text" size="60" required>
         </label>
-        <label>Description: 
-          <input name="item[description]" value="<%=item.description%>" type="text" required>
-        </label>
-        <label>Type: 
-          <input name="item[type]" value="<%=item.type%>" type="text" required>
-        </label>
-        <label>Line: 
-          <input name="item[line]" value="<%=item.line%>" type="text" >
-        </label>
-        <label>Launch Date: 
-          <input name="item[launchDate]" value="<%=item.launchDate%>" type="text" required>
-        </label>
-        <label>Status: 
-          <input name="item[status]" value="<%=item.status%>" type="text" required>
-        </label>
-        <label>Capacity: 
-          <input name="item[capacity]" value="<%=item.capacity%>" type="text" >
-        </label>
-         <label>Image URL:
-          <input name="item[image]" value="<%=item.image%>" type="url" size="80"> 
-         </label>
-
-
-        <!--
-         <label>Party: 
-          <select name="item[party]" required>
+        <label>System: 
+          <select name="item[system]" required>
             <% related_items.forEach(function(related_item) { %>
             <option value="<%=related_item._id%>"
-              <% if (related_item._id === item.party) { %>selected<% } %>>
-              <%=related_item.name%>
+              <% if (related_item._id === item.system) { %>selected<% } %>>
+              <%=related_item.sys_name%>
             </option>
             <% }); %>
           </select>
-         </label>
-        -->
-
+        <label> Type of Part:
+          <select name="item[part_type]" required>
+            <option value="required">Required </option>
+            <option value="optional">Optional </option>
+          </select>
+        </label>
         <button>Update</button>
       </form>
     </div>

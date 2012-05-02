@@ -32,6 +32,7 @@ This is the main resource of the application, the following information is kept 
 
 ## Resource: Equipment Components
 Parts used to build an instrument system. Attributes:
+
 **Name:** The brand name of the product. 
 
 **Part Type:** To specify whether the part is required for the system, or it is an optional component. 

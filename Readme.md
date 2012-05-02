@@ -41,5 +41,9 @@ A piece of equipment defined as  a component can be used in one or several syste
 
 
 ## Application Flow and use cases. 
-The instrument base administrator should be able to create 
+The instrument base administrator should be able to create a system in the application and add as many components as required to complete the configuration. 
+
+## Metadata Annotations
+Systems and components are annotated with microdata, using terms defined in Schema.org 
+
 

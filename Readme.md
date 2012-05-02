@@ -2,12 +2,15 @@
 
 This is a simplified model for an application intended to manage the configuration of medical devices for an organization working in the Clinical [In-vitro Diagnotic](http://en.wikipedia.org/wiki/In_vitro_diagnostics) Market. 
 
+The samples are taken from the [company bioMerieux Inc](www.biomerieux.com), based in the RTP Area in NC.
 
-
-
-[INLS 490-186 Web Information Organization](http://aeshin.org/teaching/inls-490-186/2012/sp/).
 
 ## Resources
+
+The main resource of the application is a medical system. A System is an instrument that the company installs on customer sites (hospital, labs, medical and clinical centers) to perform in-vitro diagnostic tests.  
+These systems are built with a number of parts, or components, which are also represented in this model as a resource. Any instrument system may have one or several components attached to them. 
+The goal of this application is to allow an instrument administrator in the organization to keep track of all the systems supported by the different business units or areas, and the composition of these systems, that is, all the components defined for each of them. 
+
 
 You will want to start by [forking](http://help.github.com/fork-a-repo/) this repository so you have your own copy to modify. If you decide to work in a group, I will put a copy of the code in your shared repository. (While it's possible to collaborate with your group by pushing and pulling commits across your two or three separate forks, doing so requires somewhat advanced knowledge of Git and thus isn't expected for this assignment.)
 

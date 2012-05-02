@@ -1,8 +1,13 @@
-# A simple application to administer Medical Diagnostic Devices
+# A simple application for Medical Diagnostic Devices
 
-This is an example application intended to be used as a starting point for the final project in [INLS 490-186 Web Information Organization](http://aeshin.org/teaching/inls-490-186/2012/sp/).
+This is a simplified model for an application intended to manage the configuration of medical devices for an organization working in the Clinical [In-vitro Diagnotic](http://en.wikipedia.org/wiki/In_vitro_diagnostics) Market. 
 
-## Forking this repository
+
+
+
+[INLS 490-186 Web Information Organization](http://aeshin.org/teaching/inls-490-186/2012/sp/).
+
+## Resources
 
 You will want to start by [forking](http://help.github.com/fork-a-repo/) this repository so you have your own copy to modify. If you decide to work in a group, I will put a copy of the code in your shared repository. (While it's possible to collaborate with your group by pushing and pulling commits across your two or three separate forks, doing so requires somewhat advanced knowledge of Git and thus isn't expected for this assignment.)
 

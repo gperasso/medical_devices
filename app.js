@@ -191,7 +191,7 @@ app.put('/systems/:id', // TODO: change to suit your URI design.
 app.get('/components/',          // TODO: change to suit your URI design. 
   function(req, res) {
 
-    var item_type = 'components'; // TODO: change to the type of item you want.
+    var item_type = 'component'; // TODO: change to the type of item you want.
 
     // Get items of the specified type that match the query.
     db.getSome(item_type, req.query, function(err, items) {
@@ -217,7 +217,7 @@ app.get('/components/',          // TODO: change to suit your URI design.
 app.get('/systems/',          // TODO: change to suit your URI design. 
   function(req, res) {
 
-    var item_type = 'systems'; // TODO: change to the type of item you want.
+    var item_type = 'system'; // TODO: change to the type of item you want.
 
     // Get items of the specified type that match the query.
     db.getSome(item_type, req.query, function(err, items) {

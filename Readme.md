@@ -1,4 +1,4 @@
-# An example web information service
+# A simple application to administer Medical Diagnostic Devices
 
 This is an example application intended to be used as a starting point for the final project in [INLS 490-186 Web Information Organization](http://aeshin.org/teaching/inls-490-186/2012/sp/).
 

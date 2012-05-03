@@ -49,6 +49,10 @@ The solution should let the user to search and filter instrument systems by "Cou
 For Components, users should be able to search and filter by "Component Name" and by "Status".
 
 ## Metadata Annotations
+
+
+Use Microdata i the application to annotate metadata about the target organization and the creator in the index file.
+
 Systems and components are annotated with microdata, using terms defined in Schema.org 
 
 Systems and Components are defined as extensions of the Schema.org term: Product, as

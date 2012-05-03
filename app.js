@@ -188,11 +188,10 @@ app.put('/systems/:id', // TODO: change to suit your URI design.
 // Another example of handling GET of a "collection" resource. /////////////////
 // This time we support filtering the list by some criteria (i.e. searching). //
 ////////////////////////////////////////////////////////////////////////////////
-app.get('/components/',          // TODO: change to suit your URI design. 
+app.get('/comp_name/',          // TODO: change to suit your URI design. 
   function(req, res) {
 
     var item_type = 'component'; // TODO: change to the type of item you want.
-
     // Get items of the specified type that match the query.
     db.getSome(item_type, req.query, function(err, items) {
 
@@ -214,7 +213,58 @@ app.get('/components/',          // TODO: change to suit your URI design.
 // Another example of handling GET of a "collection" resource. /////////////////
 // This time we support filtering the list by some criteria (i.e. searching). //
 ////////////////////////////////////////////////////////////////////////////////
-app.get('/systems/',          // TODO: change to suit your URI design. 
+app.get('/comp_status/',          // TODO: change to suit your URI design. 
+  function(req, res) {
+
+    var item_type = 'component'; // TODO: change to the type of item you want.
+    // Get items of the specified type that match the query.
+    db.getSome(item_type, req.query, function(err, items) {
+
+      // If there was a database error, return an error status.
+      if (err) { res.send(err, 500); } 
+
+      // Otherwise, use the returned data to render an HTML page.
+      else {
+        res.render(
+          'list-components', // TODO: change to the name of your HTML template.
+          { items: items }
+        );
+      }
+    });
+  }
+);
+
+//////////  medical devices //////////////////////////////////////////////////////////////////////
+// Another example of handling GET of a "collection" resource. /////////////////
+// This time we support filtering the list by some criteria (i.e. searching). //
+////////////////////////////////////////////////////////////////////////////////
+app.get('/systems_country/',          // TODO: change to suit your URI design. 
+  function(req, res) {
+
+    var item_type = 'system'; // TODO: change to the type of item you want.
+
+    // Get items of the specified type that match the query.
+    db.getSome(item_type, req.query, function(err, items) {
+
+      // If there was a database error, return an error status.
+      if (err) { res.send(err, 500); } 
+
+      // Otherwise, use the returned data to render an HTML page.
+      else {
+        res.render(
+          'list-systems', // TODO: change to the name of your HTML template.
+          { items: items }
+        );
+      }
+    });
+  }
+);
+
+//////////  medical devices //////////////////////////////////////////////////////////////////////
+// Another example of handling GET of a "collection" resource. /////////////////
+// This time we support filtering the list by some criteria (i.e. searching). //
+////////////////////////////////////////////////////////////////////////////////
+app.get('/systems_app/',          // TODO: change to suit your URI design. 
   function(req, res) {
 
     var item_type = 'system'; // TODO: change to the type of item you want.

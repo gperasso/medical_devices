@@ -61,7 +61,7 @@ Systems and Components are defined as extensions of the Schema.org term: Product
 For Systems:
 The property "Country of Origin" is annotated through the terms "Organization/Corporation", "PostalAddress" and "Country".
 
-The property "Application" is also an extension of the Product's property "brand". 
+The property "application" is also an extension of the Product's property "brand". 
 
 A property "productManager" is created for the term Product. The property is linked to the class "Person", using the standard property "name".
 

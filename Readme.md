@@ -45,6 +45,7 @@ The instrument base administrator should be able to create a system in the appli
 If the Product Manager determines that a component should no longer be included in a system, the application should allow to set the status of this component as obsolete. 
 
 The solution should let the user to search and filter instrument systems by "Country of Origin" or "Application". 
+
 For Components, users should be able to search and filter by "Component Name" and by "Status".
 
 ## Metadata Annotations
@@ -52,8 +53,10 @@ Systems and components are annotated with microdata, using terms defined in Sche
 
 Systems and Components are defined as extensions of the Schema.org term: Product, as
  
- itemtype="http://schema.org/Product/Clinical/Diagnostic/System"
- itemtype="http://schema.org/Product/Clinical/Diagnostic/Component"
+ schema.org/Product/Clinical/Diagnostic/System
+ 
+ schema.org/Product/Clinical/Diagnostic/Component
+ 
 
 For Systems:
 The property "Country of Origin" is annotated through the terms "Organization/Corporation", "PostalAddress" and "Country".

@@ -4,16 +4,12 @@
     <title>Medical System Data: <%=item.name%></title>
     <link rel="stylesheet" href="/style.css">
   </head>
-  <body>
+  <body bgcolor="#E6E6FA">
     <div itemscope itemtype="http://schema.org/Product/Clinical/Diagnostic/System">
      <a href="/"><h1>System Data</h1></a>
      <dl>
       <dt>System name</dt>
       <span itemprop="name"> <dd><%=item.sys_name%></dd></span>
-      <% if (item.sys_descrip) { %>
-      <dt>Description</dt>
-      <span itemprop="description"> <dd><%=item.sys_descrip%></dd> </span>
-      <% } %>
      <dt>Country of Origin</dt>
       <span itemprop="manufacturer" itemscope itemtype="http://www.schema.org/Corporation"
         <span itemprop="location" itemscope itemtype="http://www.schema.org/PostalAddress"
@@ -68,9 +64,47 @@
             <option value="optional">Optional </option>
           </select>
         </label>
-
+        <label> Component Status:
+          <select name="item[part_status]" required>
+            <option value="Active" selected="selected" >Active </option>
+            <option value="Obsolete">Obsolete </option>
+          </select>
+        </label>
         <button>Add</button>
       </form>
     </div>
+
+    <div class="control">
+      <h2>Update System</h2>
+      <form method="post" action="/systems/<%=item._id%>">
+        <input type="hidden" name="_method" value="put">
+        <!-- The line above tells the server to treat this as a PUT request. -->
+
+        <label>System name: 
+          <input name="item[sys_name]" value="<%=item.sys_name%>" type="text" size="60" required
+                 placeholder="System Standard Name">
+        </label>
+        <label>Country of Origin <br>
+          <input name="item[sys_country]" value="<%=item.sys_country%>" size="50" required >
+        </label>
+        <label>Application <br>
+          <input name="item[sys_application]" value="<%=item.sys_application%>" size="50" required >
+        </label>
+        <label>Product Manager:
+          <input name="item[sys_manager]" value="<%=item.sys_manager%>" type="text" size="60" required
+                 placeholder="Product Manager Full Name">
+        </label>
+        <label>Corporate image URL:
+          <input name="item[image]" value="<%=item.image%>" type="url" size="100">
+        </label>
+        <label>Corporate Product Website:
+          <input name="item[website]" value="<%=item.website%>" type="url" size="100">
+        </label>
+        <a href="http://www.biomerieux-diagnostics.com/servlet/srt/bio/clinical-diagnostics/dynPage?node=products_clinical_diagnostics">Visit Product Library here</a>
+
+        <button>Update</button>
+      </form>
+    </div>
+
   </body>
 </html>

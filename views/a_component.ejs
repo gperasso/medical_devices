@@ -4,7 +4,7 @@
     <title>Medical Devices Data: <%=item.name%></title>
     <link rel="stylesheet" href="/style.css">
   </head>
-  <body>
+  <body bgcolor="#E6E6FA">
     <a href="/"><h1>Component Data</h1></a>
     <div itemscope itemtype="http://schema.org/Product/Clinical/Diagnostic/Component">
      <dl>
@@ -24,6 +24,8 @@
       <dt>Type of Part</dt>
       <dd><%=item.part_type%></dd>
       <% } %>
+      <dt>Status</dt>
+      <dd><%=item.part_status%></dd>
      </dl>
     </div>    
     <div class="control">
@@ -49,6 +51,13 @@
             <option value="optional">Optional </option>
           </select>
         </label>
+        <label>Component Status:
+          <select name="item[part_status]" required>
+            <option value="Active">Active </option>
+            <option value="Obsolete">Obsolete </option>
+          </select>
+        </label>
+
         <button>Update</button>
       </form>
     </div>

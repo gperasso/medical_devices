@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="/style.css">
   </head>
   <body>
-    <a href="/"><h1>System Data</h1></a>
+    <a href="/"><h1>Clinical Diagnostic Systems</h1></a>
     <% if (items.length > 0) { %>
     <ul>
       <% items.forEach(function(item) { %>
@@ -15,6 +15,31 @@
     <% } else { %>
     <div>No Systems have been added.</div>
     <% } %>
+
+    <div class="control">
+      <h2>Search for systems by Country of Origin</h2>
+      <form method="get" action="/systems_country/">
+        <label> 
+          <select name="sys_country" >
+            <option value=" ">All </option>
+            <option value="FR ">France </option>
+            <option value="USA ">USA </option>
+            <option value="BR ">Brazil </option>
+            <option value="IT ">Italy </option>
+            <option value="CN ">China </option>
+          </select>
+        </label>
+        <button>Search by Country</button>
+      </form>
+    </div>
+    <div class="control">
+      <h2>Search for systems by Application</h2>
+      <form method="get" action="/systems_app/">
+        <label>Application: <input name="sys_application"></label>
+        <button>Search by Application</button>
+      </form>
+    </div>
+
     <div class="control">
       <h2>Add or update a new Medical System</h2>
       <script>
@@ -39,18 +64,13 @@
           <input name="item[sys_name]" type="text" size="60" required
                  placeholder="System Standard Name">
         </label>
-        <label>System description:
-          <textarea name="item[sys_descrip]" cols="80" rows="10" 
-                    placeholder="Technical Specifications of the device as provided by manufacturer"
-          ></textarea>
-        </label>
         <label>Country of Origin <br>
           <select name="item[sys_country]" required >
-            <option value="FR">France </option>
-            <option value="USA">USA </option>
-            <option value="BR">Brazil </option>
-            <option value="IT">Italy </option>
-            <option value="CN">China </option>
+            <option value="FR ">France </option>
+            <option value="USA ">USA </option>
+            <option value="BR ">Brazil </option>
+            <option value="IT ">Italy </option>
+            <option value="CN ">China </option>
           </select>
         </label>
         <label>Application <br>
@@ -78,5 +98,6 @@
         <button>Add or update</button>
       </form>
     </div>
+
   </body>
 </html>

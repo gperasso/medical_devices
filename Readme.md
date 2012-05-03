@@ -17,8 +17,6 @@ This is the main resource of the application, the following information is kept 
 
 **Name:** The commercial brand name of the system.
 
-**Description:** Manufacturer description with technical specifications of the device. It is a free-text field. 
-
 **Country of Origin:** three-letter code of the country from the manufacturer, the options are: USA, France, China, Brazil and Italy; locations where the organization has the manufacturing plants. 
 
 **Application:** It is the product line or areas where the systems are applied, for instance Bacteriology, Cancers, Virology, and others.
@@ -37,11 +35,17 @@ Parts used to build an instrument system. Attributes:
 
 **Part Type:** To specify whether the part is required for the system, or it is an optional component. 
 
+**Component Status:** The status of a given component could be "Active" or "Obsolete".
+
 A piece of equipment defined as  a component can be used in one or several systems. 
 
 
 ## Application Flow and use cases. 
 The instrument base administrator should be able to create a system in the application and add as many components as required to complete the configuration. 
+If the Product Manager determines that a component should no longer be included in a system, the application should allow to set the status of this component as obsolete. 
+
+The solution should let the user to search and filter instrument systems by "Country of Origin" or "Application". 
+For Components, users should be able to search and filter by "Component Name" and by "Status".
 
 ## Metadata Annotations
 Systems and components are annotated with microdata, using terms defined in Schema.org 
